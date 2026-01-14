@@ -270,25 +270,13 @@ const Index = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-white">
                   <Icon name="Phone" size={24} />
-                  Телефон
+                  Телефоны
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-white/90">
-                <p className="text-lg font-semibold">+7 (862) 123-45-67</p>
+                <p className="text-lg font-semibold">+7 (929) 847-75-88</p>
+                <p className="text-lg font-semibold">+7 (862) 246-48-68</p>
                 <p className="text-sm mt-2 opacity-75">Звонки принимаются круглосуточно</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card/10 backdrop-blur border-white/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-white">
-                  <Icon name="Mail" size={24} />
-                  Email
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-white/90">
-                <p className="text-lg">info@specsvyaz-sochi.ru</p>
-                <p className="text-sm mt-2 opacity-75">Ответим в течение 1 часа</p>
               </CardContent>
             </Card>
 
