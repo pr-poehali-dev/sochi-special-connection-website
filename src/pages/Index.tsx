@@ -262,7 +262,7 @@ const Index = () => {
                 <p className="text-lg">улица Гастелло, 40а</p>
                 <p className="text-base">354395, Сочи, Адлер м-н</p>
                 <p className="text-base">Адлерский район, 2 этаж</p>
-                <p className="text-sm mt-3 opacity-75">Пн-Пт: 9:00 - 18:00<br/>Сб: 10:00 - 15:00</p>
+                <p className="text-sm mt-3 opacity-75">Пн-Пт: 8:00 - 17:00</p>
               </CardContent>
             </Card>
 
