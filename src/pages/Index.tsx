@@ -11,6 +11,7 @@ const Index = () => {
   const [toCity, setToCity] = useState('');
   const [weight, setWeight] = useState('');
   const [serviceType, setServiceType] = useState('');
+  const [itemValue, setItemValue] = useState('');
 
   const cities = [
     'Сочи', 'Москва', 'Санкт-Петербург', 'Краснодар', 'Ростов-на-Дону', 
@@ -18,10 +19,9 @@ const Index = () => {
   ];
 
   const services = [
-    { id: 'secret', name: 'Секретная почта', icon: 'ShieldCheck', color: 'bg-primary' },
-    { id: 'precious', name: 'Драгоценные посылки', icon: 'Gem', color: 'bg-accent' },
-    { id: 'documents', name: 'Документы', icon: 'FileText', color: 'bg-secondary' },
-    { id: 'express', name: 'Экспресс доставка', icon: 'Zap', color: 'bg-primary' }
+    { id: 'secret', name: 'Секретная посылка', icon: 'ShieldCheck', color: 'bg-primary', description: 'Максимальная защита и конфиденциальность' },
+    { id: 'express', name: 'Экспресс', icon: 'Truck', color: 'bg-accent', description: 'Быстрая наземная доставка 1-2 дня' },
+    { id: 'express-air', name: 'Экспресс (самолёт)', icon: 'Plane', color: 'bg-secondary', description: 'Авиадоставка в течение суток' }
   ];
 
   const calculatePrice = () => {
@@ -29,11 +29,14 @@ const Index = () => {
     
     const basePrice = parseFloat(weight) * 150;
     const serviceMultiplier = serviceType === 'secret' ? 2.5 : 
-                             serviceType === 'precious' ? 3 : 
-                             serviceType === 'documents' ? 1.5 : 2;
+                             serviceType === 'express' ? 1.8 : 
+                             serviceType === 'express-air' ? 3.5 : 2;
     const distanceMultiplier = fromCity === toCity ? 1 : 1.8;
     
-    return Math.round(basePrice * serviceMultiplier * distanceMultiplier);
+    // Страховка от оценочной стоимости (0.5% от стоимости)
+    const insuranceFee = itemValue ? parseFloat(itemValue) * 0.005 : 0;
+    
+    return Math.round(basePrice * serviceMultiplier * distanceMultiplier + insuranceFee);
   };
 
   const price = calculatePrice();
@@ -190,18 +193,34 @@ const Index = () => {
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="weight" className="text-base font-medium">Вес груза (кг)</Label>
-                <Input 
-                  id="weight"
-                  type="number" 
-                  placeholder="Введите вес в килограммах"
-                  value={weight}
-                  onChange={(e) => setWeight(e.target.value)}
-                  className="h-12 text-base"
-                  min="0.1"
-                  step="0.1"
-                />
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="weight" className="text-base font-medium">Вес груза (кг)</Label>
+                  <Input 
+                    id="weight"
+                    type="number" 
+                    placeholder="Введите вес в килограммах"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                    className="h-12 text-base"
+                    min="0.1"
+                    step="0.1"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="itemValue" className="text-base font-medium">Оценочная стоимость посылки (₽)</Label>
+                  <Input 
+                    id="itemValue"
+                    type="number" 
+                    placeholder="Укажите стоимость для страховки"
+                    value={itemValue}
+                    onChange={(e) => setItemValue(e.target.value)}
+                    className="h-12 text-base"
+                    min="0"
+                    step="1000"
+                  />
+                </div>
               </div>
 
               {price && (
