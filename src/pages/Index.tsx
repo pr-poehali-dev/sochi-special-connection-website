@@ -134,7 +134,7 @@ const Index = () => {
       <section className="py-16 px-4" id="calculator">
         <div className="container mx-auto max-w-3xl">
           <Card className="shadow-2xl border-2">
-            <CardHeader className="bg-gradient-to-r from-primary to-accent text-white">
+            <CardHeader className="bg-primary text-white">
               <CardTitle className="text-3xl flex items-center gap-3">
                 <Icon name="Calculator" size={32} />
                 Калькулятор стоимости доставки
