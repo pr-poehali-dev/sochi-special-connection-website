@@ -64,7 +64,7 @@ const Index = () => {
             <Icon name="Award" size={20} className="text-primary" />
             <span className="text-sm font-medium text-primary">Государственная служба защищённой связи</span>
           </div>
-          <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-secondary via-primary to-accent">
+          <h2 className="text-5xl font-bold mb-6 text-primary">
             Безопасная доставка ценных грузов
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
